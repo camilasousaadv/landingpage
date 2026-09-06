@@ -1,0 +1,476 @@
+/* ============================================================================
+   06-home.css   ·   elementor-1131 "inicial"  (type: page)
+   ============================================================================ */
+
+/* ==========================================================================
+   SECAO 1 · HERO  ·  container #26f1a128 (boxed 1330px | row | wrap)
+   ========================================================================== */
+.hero {
+  --container-width: 1330px;
+  min-height: 90vh;
+  padding: 250px 0 100px 0;
+  overflow: hidden;
+  background-image: url("../images/bbner-cmilaa2.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.hero > .e-con-inner { flex-direction: row; flex-wrap: wrap; gap: 0; }
+
+@media (max-width: 1024px) {
+  .hero {
+    padding: 200px 50px 0 50px;
+    background-image: url("../images/banner-ddddfs.png");
+    background-position: bottom center;
+  }
+}
+@media (max-width: 767px) {
+  .hero { padding: 200px 0 0 0; }
+}
+
+/* #e0fb7ab · coluna de texto */
+.hero__text {
+  width: 53%;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0 0 0 -25px;
+  padding: 5px;
+}
+@media (max-width: 1024px) { .hero__text { width: 100%; margin: 0; padding: 10px; } }
+@media (max-width: 767px)  { .hero__text { margin: 0; padding: 15px; } }
+
+/* #2179886a · coluna da imagem */
+.hero__media { width: 45%; flex-direction: column; }
+@media (max-width: 1024px) { .hero__media { width: 100%; padding: 0; } }
+@media (max-width: 767px)  { .hero__media { padding: 0; } }
+
+/* heading #264345f6 */
+.hero__eyebrow {
+  font-family: 'Work Sans', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #FFFFFF;
+  text-align: start;
+  width: 100%;
+}
+@media (max-width: 1024px) { .hero__eyebrow { font-size: 14px; text-align: center; } }
+@media (max-width: 767px)  { .hero__eyebrow { font-size: 10px; text-align: center; } }
+
+/* heading #2fb0110d */
+.hero__title {
+  font-family: 'Lora', Georgia, 'Times New Roman', serif;
+  font-size: 43px;
+  font-weight: 500;
+  color: #FFFFFF;
+  margin: 7px 0 0 0;
+}
+@media (max-width: 1024px) { .hero__title { text-align: center; } }
+@media (max-width: 767px)  { .hero__title { font-size: 31px; } }
+
+/* text-editor #9df64b6 */
+.hero__desc {
+  font-family: 'Inter', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #FFFFFF;
+  padding: 0 20px 8px 0;
+}
+@media (max-width: 1024px) { .hero__desc { padding: 5px; } }
+@media (max-width: 767px)  { .hero__desc { font-size: 16px; padding: 5px; text-align: center; } }
+
+/* html #50f8aacc · botao */
+@media (max-width: 1024px) { .hero__cta { align-self: center; } }
+
+/* ==========================================================================
+   ANCORAS VAZIAS  ·  #5a1b22b8 (#encontrar) #7c358aa5 (#paramim) #394ee1fd (#quem)
+   ========================================================================== */
+.anchor-block { flex-direction: column; }
+
+/* ==========================================================================
+   SECAO 3 · "O QUE VOCE VAI ENCONTRAR"  ·  container #1d492c25
+   ========================================================================== */
+.encontrar { margin: 30px 0 0 0; padding: 30px 10px 10px 10px; }
+.encontrar > .e-con-inner { align-items: center; gap: 13px; }
+/* flex_align_items: center faz os widgets deixarem de esticar; os widgets que
+   no Elementor tem _element_width "inherit" (100%) voltam a ocupar a linha. */
+.encontrar > .e-con-inner > .sec-eyebrow,
+.encontrar > .e-con-inner > .encontrar__title,
+.encontrar > .e-con-inner > .sec-body,
+.encontrar > .e-con-inner > .servicos { width: 100%; }
+
+/* headings "olho" (eyebrow) — #6989e9a #202cb1ec #1053f5ab */
+.sec-eyebrow {
+  font-family: 'Work Sans', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #E9B954;
+  width: 100%;
+}
+.sec-eyebrow--center { text-align: center; }
+.sec-eyebrow--start  { text-align: start; }
+@media (max-width: 1024px) { .sec-eyebrow { font-size: 14px; text-align: center; } }
+@media (max-width: 767px)  { .sec-eyebrow { font-size: 14px; text-align: center; } }
+
+/* dividers dourados — #52652462 #35c98491 #177d5714 */
+.sec-divider {
+  --e-divider-color: #C09946;
+  --e-divider-weight: 1.9px;
+  --e-divider-gap: 2px;
+  margin: -7px 0 0 0;
+}
+.sec-divider .e-divider__text {
+  font-family: 'Work Sans', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #FFFFFF;
+}
+.sec-divider--9  { --e-divider-width: 9%; }
+.sec-divider--19 { --e-divider-width: 19%; }
+@media (max-width: 1024px) {
+  .sec-divider--9, .sec-divider--19 { --e-divider-width: 17%; justify-content: center; }
+}
+@media (max-width: 767px) {
+  .sec-divider--9, .sec-divider--19 { --e-divider-width: 32%; align-self: center; }
+  .sec-divider .e-divider__text { font-size: 14px; }
+}
+
+/* heading #6825911f */
+.encontrar__title {
+  font-family: 'Lora', Georgia, 'Times New Roman', serif;
+  font-size: 33px;
+  font-weight: 600;
+  color: #343434;
+  text-align: center;
+  width: 100%;
+  padding: 0 200px;
+}
+@media (max-width: 1024px) { .encontrar__title { font-size: 30px; padding: 0 50px; } }
+@media (max-width: 767px)  { .encontrar__title { font-size: 24px; padding: 0; } }
+
+/* text-editor #4a582688 e #6c4823aa */
+.sec-body {
+  font-family: 'Inter', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: #343434;
+  text-align: justify;
+  padding: 0 10px 0 0;
+}
+@media (max-width: 1024px) { .sec-body { padding: 5px; } }
+@media (max-width: 767px)  { .sec-body { font-size: 17px; padding: 5px; } }
+
+/* ==========================================================================
+   SECOES 5 e 8 · duas colunas  ·  #72cede85 e #5f6031af
+   ========================================================================== */
+.split { padding: 55px 10px 10px 10px; }
+.split > .e-con-inner { flex-direction: row; }
+.split--paravoce > .e-con-inner { gap: 30px; }
+.split--quem     > .e-con-inner { gap: 0; }
+
+@media (max-width: 1024px) {
+  .split { padding: 30px 10px 10px 10px; }
+  .split > .e-con-inner { flex-direction: column; }
+}
+@media (max-width: 767px) {
+  .split { margin: 50px 0 0 0; padding: 10px; }
+}
+
+.split__col { width: 50%; flex-direction: column; }
+@media (max-width: 1024px) { .split__col { width: 100%; } }
+
+.split__col--text-1 { gap: 9px; }               /* #6f7fa508 */
+.split__col--text-2 { gap: 12px; }              /* #2a9a96d1 */
+@media (max-width: 767px) { .split__col--text-2 { padding: 40px 10px 10px 10px; } }
+
+.split__col--card {                             /* #63583d4f e #43011e63 */
+  justify-content: center;
+  padding: 0 25px 0 0;
+}
+@media (max-width: 767px) { .split__col--card { padding: 0; } }
+
+/* heading #441bdcc4 e #4e705e6c */
+.split__title {
+  font-family: 'Lora', Georgia, 'Times New Roman', serif;
+  font-weight: 600;
+  color: #343434;
+  text-align: start;
+  width: 100%;
+}
+.split__title--1 { font-size: 32px; padding: 0 0 20px 0; }
+.split__title--2 { font-size: 33px; padding: 0; }
+@media (max-width: 1024px) {
+  .split__title { font-size: 30px; padding: 0 50px; text-align: center; }
+  .split__title--1 { text-align: center; }
+}
+@media (max-width: 767px) { .split__title { font-size: 24px; padding: 0; text-align: center; } }
+
+/* html #772aa8ea · painel de checklist */
+@media (max-width: 1024px) { .split__panel { padding: 20px 0 0 0; align-self: center; } }
+@media (max-width: 767px)  { .split__panel { padding: 15px 0 0 0; } }
+
+/* icon-list #67f60a6a */
+.quem__list {
+  --e-icon-list-space: 0px;
+  --e-icon-list-icon-size: 16px;
+  --e-icon-list-icon-color: #E9B954;
+  font-family: 'Inter', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #1F1F1F;
+}
+
+/* ==========================================================================
+   CARD "DRA. CAMILA SOUSA"  ·  #5d1e0595 / #77db0709 (.hover-card)
+   ========================================================================== */
+/* Veu das barras do card.
+   O JSON pedia background_color #50110454, mas o custom_css do elemento aplicava
+   rgba(255,255,255,.71) por cima (no Elementor o CSS customizado vence) — o que
+   deixava texto branco sobre fundo claro. A pedido, trocado por um degrade
+   vinho -> quase preto com blur, para dar contraste ao texto. */
+.doctor-card {
+  --doctor-card-veil: linear-gradient(180deg, rgba(72, 16, 7, .78), rgba(20, 4, 2, .86));
+}
+
+.doctor-card { width: 100%; flex-direction: column; gap: 13px; padding: 0; }
+@media (max-width: 1024px) { .doctor-card { width: 75%; align-self: center; } }
+/* No mobile o card herdava width_tablet 75% e sobrava margem demais nas laterais.
+   Ajustado a pedido: ocupa a coluna inteira (o respiro vem do padding da secao). */
+@media (max-width: 767px)  { .doctor-card { width: 100%; } }
+
+/* call-to-action #dddb51c */
+.doctor-card__cta {
+  min-height: 470px;
+  border-radius: 9px;
+  background-image: url("../images/camilsa-pg.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* barra do titulo · #13e2ccc / #43db4bc1 */
+.doctor-card .card-title {
+  width: 100%;
+  min-height: 80px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 13px;
+  margin: -89px 0 0 0;
+  padding: 0 10px 10px 10px;
+  align-self: center;
+  z-index: 90;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #CFCFCF59;
+  background: var(--doctor-card-veil);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+@media (max-width: 767px) {
+  .doctor-card .card-title { min-height: 80px; justify-content: center; align-items: center; }
+}
+
+/* bloco da descricao · #99832b5 / #550d2e54 */
+.doctor-card .card-desc {
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
+  padding: 20px 10px 30px 10px;
+  align-self: center;
+  z-index: 90;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #CFCFCF59;
+  background: var(--doctor-card-veil);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+/* heading #24eabf59 / #57949394 */
+.doctor-card__name {
+  font-family: 'Lora', Georgia, 'Times New Roman', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #FFFFFF;
+  text-align: center;
+  width: 100%;
+  margin: 0;
+}
+@media (max-width: 1024px) { .doctor-card__name { text-align: center; } }
+@media (max-width: 767px)  { .doctor-card__name { font-size: 20px; text-align: start; width: auto; } }
+
+/* image #356a16a5 / #4a2e7b3a */
+.doctor-card__avatar img { width: 41px; }
+@media (max-width: 767px) { .doctor-card__avatar img { width: 31px; } }
+
+/* heading #3e1a1cb7 / #25de1d6d */
+.doctor-card__role {
+  font-family: 'Inter', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 21px;
+  font-weight: 600;
+  color: #FFFFFF;
+  text-align: center;
+  width: 100%;
+  margin: 20px 0 0 0;
+}
+@media (max-width: 767px) { .doctor-card__role { font-size: 17px; text-align: center; } }
+
+/* divider #74eff23 / #12908441 */
+.doctor-card__divider {
+  --e-divider-color: #85210D;
+  --e-divider-weight: 1.9px;
+  --e-divider-gap: 2px;
+  --e-divider-width: 37%;
+  margin: -5px 0 0 0;
+}
+.doctor-card__divider .e-divider__text {
+  font-family: 'Work Sans', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #FFFFFF;
+}
+@media (max-width: 1024px) { .doctor-card__divider { --e-divider-width: 47%; justify-content: center; } }
+@media (max-width: 767px)  {
+  .doctor-card__divider { --e-divider-width: 100%; align-self: center; }
+  .doctor-card__divider .e-divider__text { font-size: 14px; }
+}
+
+/* heading #552ed080 / #14d0670e */
+.doctor-card__oab {
+  font-family: 'Inter', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: #FFFFFF;
+}
+
+/* image #38d68a0a */
+.paravoce__image { text-align: right; }
+.paravoce__image img { border-radius: 11px; }
+@media (max-width: 1024px) {
+  .paravoce__image { text-align: center; }
+  .paravoce__image img { width: 70%; }
+}
+@media (max-width: 767px) { .paravoce__image img { width: 95%; } }
+
+/* ==========================================================================
+   SECAO 6 · "CONTEUDO"  ·  container #3cd5dd97 (full | column | width 100%)
+   ========================================================================== */
+.conteudo {
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
+  margin: 0;
+  padding: 70px 10px 10px 0;
+  width: 100%;
+}
+@media (max-width: 767px) { .conteudo { padding: 20px; } }
+
+/* ==========================================================================
+   SECAO 9 · CTA FINAL  ·  #202b69e6 > #359d1a58 > #4a9abaaa
+   ========================================================================== */
+.cta-final { flex-direction: column; margin: 80px 0 30px 0; }
+
+/* O container #202b69e6 nao tem padding no JSON: no mobile a caixa arredondada
+   encostava nas bordas da tela. Respiro lateral adicionado a pedido. */
+@media (max-width: 767px) {
+  .cta-final { padding-left: 20px; padding-right: 20px; }
+}
+
+.cta-final__box {
+  position: relative;
+  min-height: 230px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  overflow: hidden;
+  background-image: url("../images/banner-ctt.png");
+  background-position: center center;
+  background-repeat: repeat;
+  background-size: contain;
+}
+.cta-final__box::before {                    /* background_overlay */
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: #4D0000;
+  background-repeat: repeat;
+  opacity: .37;
+  pointer-events: none;
+}
+.cta-final__box > * { position: relative; z-index: 1; }
+
+@media (max-width: 767px) {
+  .cta-final__box { background-size: cover; padding: 10px 10px 0 10px; }
+}
+
+.cta-final__inner {
+  width: 55%;
+  flex-direction: column;
+  gap: 20px;
+  align-self: flex-end;
+  padding: 34px 10px 10px 10px;
+}
+@media (max-width: 1024px) { .cta-final__inner { width: 60%; } }
+/* No mobile herdava width_tablet 60%: sobravam ~210px de conteudo, o titulo
+   quebrava em 3 linhas e o botao dourado (width:100% abaixo de 700px) ficava
+   distorcido. Ajustado a pedido: ocupa a caixa inteira. */
+@media (max-width: 767px)  { .cta-final__inner { width: 100%; margin: 30px 0 0 0; padding: 10px 10px 0 10px; } }
+
+/* image #58f64f91 */
+.cta-final__logo { width: 100%; text-align: center; }
+.cta-final__logo img {
+  width: 130px;
+  /* css_filters (css_filters_css_filter: custom) */
+  filter: brightness(200%) contrast(103%) saturate(111%) blur(0px) hue-rotate(29deg);
+}
+@media (max-width: 1024px) { .cta-final__logo img { width: 120px; } }
+
+/* heading #597ea003 */
+.cta-final__title {
+  width: 90%;
+  align-self: center;
+  font-family: 'Lora', Georgia, 'Times New Roman', serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: #FFFFFF;
+  text-align: center;
+  margin: 0;
+}
+@media (max-width: 1024px) { .cta-final__title { font-size: 30px; } }
+@media (max-width: 767px)  { .cta-final__title { font-size: 26px; } }
+
+/* heading #2ad22be7 */
+.cta-final__sub {
+  width: 800px;
+  max-width: 100%;
+  align-self: center;
+  font-family: 'Inter', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: #E0E0E0;
+  text-align: center;
+  padding: 0 10px 0 0;
+}
+@media (max-width: 1024px) { .cta-final__sub { padding: 5px; } }
+@media (max-width: 767px)  { .cta-final__sub { font-size: 17px; padding: 5px; } }
+
+/* html #7cc26487 */
+.cta-final__btn { align-self: center; }
+
+/* heading #1c5993f2 */
+.cta-final__note {
+  width: 800px;
+  max-width: 100%;
+  align-self: center;
+  font-family: 'Inter', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #949494;
+  text-align: center;
+  padding: 0 10px 0 0;
+}
+@media (max-width: 1024px) { .cta-final__note { padding: 5px; } }
+@media (max-width: 767px)  { .cta-final__note { font-size: 17px; padding: 5px; } }

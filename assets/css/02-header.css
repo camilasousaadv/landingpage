@@ -1,0 +1,242 @@
+/* ============================================================================
+   02-header.css   ·   elementor-1035 "Header land"  (type: header)
+   ============================================================================ */
+
+/* O <header> nao gera caixa propria: assim o .navbar herda o body como bloco
+   contenedor e o position:sticky funciona por toda a pagina (igual ao sticky
+   "top" do Elementor Pro). */
+.site-header { display: contents; }
+
+/* ==========================================================================
+   TOPBAR  ·  container #3373d6ae   (boxed 1345px | row | hide_mobile)
+   ========================================================================== */
+.topbar {
+  --container-width: 1345px;
+  background-color: #13397D00;          /* background_color (totalmente transparente) */
+  padding: 10px 0 8px 0;
+  margin: 0;
+  border-style: solid;
+  border-width: 0;
+  border-color: #DEDEDEB8;
+  overflow: hidden;
+  position: relative;
+  z-index: 1000;
+}
+.topbar > .e-con-inner { flex-direction: row; }
+
+/* #6c7f2 — coluna esquerda (vazia) */
+.topbar__left {
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0;
+  padding: 0;
+  z-index: 2;
+}
+
+/* #cc3d15b — coluna direita */
+.topbar__right {
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+  padding: 0;
+  z-index: 2;
+}
+
+@media (max-width: 1024px) {
+  .topbar__left  { width: 40%; }
+  .topbar__right { width: 100%; }
+}
+
+/* icon-list #56a9cb8f — telefone + e-mail */
+.topbar__contacts {
+  --e-icon-list-space: 10px;
+  --e-icon-list-indent: 0px;
+  --e-icon-list-icon-size: 15px;
+  --e-icon-list-icon-color: #FFFFFF;
+  margin: 0;
+  font-family: 'DM Sans', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: #FFFFFFF0;
+}
+.topbar__contacts .e-icon-list__item { transition: color .3s; }
+.topbar__contacts .e-icon-list__item:hover { color: #EDBA4A; }
+
+@media (max-width: 1024px) {
+  .topbar__contacts { font-size: 12px; padding: 0 9px 0 0; }
+}
+@media (max-width: 767px) {
+  .topbar__contacts { --e-icon-list-space: 4px; }
+}
+
+/* ==========================================================================
+   BARRA PRINCIPAL  ·  container #71680671
+   full | column | gap 0 | sticky top | z-index 999 | margin-bottom -150px
+   ========================================================================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0;
+  padding: 10px;
+  margin: 0 0 -150px 0;
+  border-style: solid;
+  border-width: 1px 0 0 0;
+  border-color: #DEDEDE3D;
+  transition: background .3s ease;
+}
+
+/* custom_css do container #71680671 — estado "grudado".
+   Regra identica a do JSON: mesma opacidade (0.61) e mesmo blur(8px).
+   Trocou-se apenas o RGB, de rgba(122, 68, 68, .61) para #3f120b. */
+.navbar.elementor-sticky--effects {
+  background: rgba(63, 18, 11, 0.61);          /* #3f120b */
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+/* -------------------------------------------------------------------------
+   Linha DESKTOP  ·  #2034a045  (hide_tablet + hide_mobile)
+   ------------------------------------------------------------------------- */
+.navbar__desktop {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  padding: 0;
+}
+
+/* image #65481345 — logo desktop */
+.navbar__logo {
+  width: 12%;                 /* _element_custom_width */
+  text-align: center;
+}
+.navbar__logo img {
+  width: 160px;               /* width */
+  filter: brightness(0) invert(1);   /* custom_css */
+}
+
+/* nav-menu #6969fc4a */
+.navbar__nav { margin: 0 35px 0 0; padding: 0; }
+
+.e-nav-menu { display: flex; flex-direction: row; align-items: center; }
+.e-nav-menu__item { position: relative; margin: 0; }   /* menu_space_between: 0 */
+.e-nav-menu__link {
+  position: relative;
+  display: block;
+  overflow: hidden;            /* mantem o "pointer" fora de vista ate o hover */
+  padding: 13px 16px;
+  font-family: 'DM Sans', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #FFFFFF;             /* color_menu_item */
+  transition: color .3s;
+}
+.e-nav-menu__link:hover,
+.e-nav-menu__link.is-active { color: #FFFFFF; }
+
+/* pointer "underline" + animation_line "slide" (padroes do Elementor) */
+.e-nav-menu__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #B61B19;  /* pointer_color_menu_item_hover / _active */
+  transform: translateX(-101%);
+  transition: transform .3s;
+}
+.e-nav-menu__link:hover::after,
+.e-nav-menu__link.is-active::after { transform: translateX(0); }
+
+/* submenu — estilos preservados do JSON (nenhum submenu existe no export) */
+.e-nav-menu .sub-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  background: rgba(0, 45, 126, 0.76);          /* custom_css */
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  display: none;
+}
+.e-nav-menu__item:hover > .sub-menu { display: block; }
+.e-nav-menu .sub-menu a {
+  display: block;
+  padding: 12px 20px;
+  font-family: 'DM Sans', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #FFFFFF;                               /* color_dropdown_item */
+  background-color: #000000;                    /* background_color_dropdown_item */
+  border-bottom: 1px solid #A7A7A74A;           /* dropdown_divider */
+  transition: background-color .3s, color .3s;
+}
+.e-nav-menu .sub-menu a:hover  { background-color: #B31A19; color: #FFFFFF; }
+.e-nav-menu .sub-menu a.is-active { background-color: #B31A19; color: #FFFFFF; }
+
+/* -------------------------------------------------------------------------
+   Linha MOBILE  ·  #1a2ab866  (hide_desktop + hide_tablet)
+   Linha TABLET  ·  #49ff0fd7  (hide_desktop + hide_mobile)
+   ------------------------------------------------------------------------- */
+.navbar__mobile,
+.navbar__tablet {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  padding: 0;
+}
+@media (max-width: 1024px) {
+  .navbar__mobile,
+  .navbar__tablet { justify-content: space-between; z-index: 99; }
+}
+
+/* icon #2ea060d6 — fa-user (primary_color #FFFFFF00 = invisivel; atua como
+   espacador para centralizar a logo) */
+.navbar__user { --e-icon-size: 23px; color: #FFFFFF00; }
+@media (min-width: 768px) and (max-width: 1024px) {
+  .navbar__user { --e-icon-size: 27px; margin: 0 45px 0 0; }
+}
+
+/* image #1d9054f1 — logo mobile */
+.navbar__logo-mobile { width: 15%; text-align: center; }
+.navbar__logo-mobile img { width: 60%; filter: brightness(0) invert(1); }
+@media (max-width: 767px) {
+  .navbar__logo-mobile { width: 30%; }
+  .navbar__logo-mobile img { width: 100%; max-width: 100%; }
+}
+
+/* image #1c8e6d37 — logo tablet */
+.navbar__logo-tablet { width: 15%; text-align: center; }
+.navbar__logo-tablet img { width: 60%; filter: brightness(0) invert(1); }
+@media (min-width: 768px) and (max-width: 1024px) {
+  .navbar__logo-tablet img { width: 100%; }
+}
+
+/* icon #756e699f / #63ca389 — hamburguer (bars.svg), abre o popup 229 */
+.navbar__burger { --e-icon-size: 29px; color: #FFFFFF; }
+.navbar__burger svg { fill: #FFFFFF; stroke: #FFFFFF; }
+@media (max-width: 767px)                         { .navbar__burger { margin: 5px 8px 0 0; } }
+@media (min-width: 768px) and (max-width: 1024px) { .navbar__burger { --e-icon-size: 36px; margin: 0; } }
+
+/* ==========================================================================
+   COR DO HEADER NO MOBILE  ·  #3f120b
+   No mobile nao existe topbar acima da barra: ela ja nasce "grudada" no topo,
+   entao o estado nao-sticky tambem recebe a cor. Isso evita um piscar
+   transparente antes de o JS marcar .elementor-sticky--effects.
+   No desktop e no tablet a barra segue transparente sobre o hero e so ganha a
+   cor ao grudar, como no JSON.
+   ========================================================================== */
+@media (max-width: 767px) {
+  .navbar {
+    background: rgba(63, 18, 11, 0.61);        /* #3f120b */
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+}

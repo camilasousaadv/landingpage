@@ -1,0 +1,266 @@
+/* ============================================================================
+   01-base.css
+   Reset, sistema de containers e primitivas de widget do Elementor.
+   Breakpoints do Elementor (padrao): tablet <= 1024px | mobile <= 767px
+   ============================================================================ */
+
+/* ---------------------------------------------------------------- reset -- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+/* overflow-x: clip (e nao hidden) porque `hidden` transformaria o elemento em
+   scroll container e quebraria o position:sticky do header. */
+html { -webkit-text-size-adjust: 100%; overflow-x: clip; }
+
+body {
+  margin: 0;
+  background-color: #FFFFFF;            /* page_settings #1131: background_color */
+  font-family: 'DM Sans', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  color: #343434;
+  overflow-x: clip;
+}
+
+img { max-width: 100%; height: auto; border: 0; display: block; }
+a   { text-decoration: none; color: inherit; }
+ul  { list-style: none; margin: 0; padding: 0; }
+h1, h2, h3, h4, h5, h6, p { margin: 0; }
+button { font: inherit; }
+
+/* ==========================================================================
+   CONTAINERS  (equivalente ao .e-con flexbox do Elementor 3.x)
+   boxed -> .e-con-boxed > .e-con-inner (max-width = --container-width)
+   full  -> .e-con-full  (o proprio container e o flex)
+   ========================================================================== */
+.e-con {
+  --container-width: 1140px;   /* largura padrao do kit Elementor */
+  --e-gap: 20px;               /* "Widgets Space" padrao do kit Elementor */
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  gap: var(--e-gap);
+}
+
+.e-con-boxed {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.e-con-boxed > .e-con-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--e-gap);
+  width: 100%;
+  max-width: var(--container-width);
+  margin-inline: auto;
+  min-width: 0;
+}
+
+.e-con-full { flex-direction: column; align-items: stretch; }
+
+/* ==========================================================================
+   VISIBILIDADE RESPONSIVA (hide_desktop / hide_tablet / hide_mobile)
+   ========================================================================== */
+@media (min-width: 1025px)                        { .hidden-desktop { display: none !important; } }
+@media (min-width: 768px) and (max-width: 1024px) { .hidden-tablet  { display: none !important; } }
+@media (max-width: 767px)                         { .hidden-mobile  { display: none !important; } }
+
+/* ==========================================================================
+   WIDGET: text-editor
+   ========================================================================== */
+.e-text p { margin: 0 0 1em; }
+.e-text p:last-child { margin-bottom: 0; }
+
+/* ==========================================================================
+   WIDGET: image
+   ========================================================================== */
+.e-image { line-height: 0; }
+.e-image img { display: inline-block; max-width: 100%; }
+.e-image--center { text-align: center; }
+.e-image--end    { text-align: right; }
+
+/* ==========================================================================
+   WIDGET: icon-list
+   ========================================================================== */
+.e-icon-list {
+  --e-icon-list-space: 0px;
+  --e-icon-list-indent: 0px;
+  --e-icon-list-icon-size: 14px;
+  --e-icon-list-icon-color: inherit;
+  display: flex;
+  flex-direction: column;
+}
+.e-icon-list__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-size: inherit;
+}
+.e-icon-list__item > a { display: flex; align-items: center; width: 100%; }
+.e-icon-list:not(.e-icon-list--inline) .e-icon-list__item:not(:last-child)  { padding-bottom: calc(var(--e-icon-list-space) / 2); }
+.e-icon-list:not(.e-icon-list--inline) .e-icon-list__item:not(:first-child) { margin-top: calc(var(--e-icon-list-space) / 2); }
+
+.e-icon-list__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--e-icon-list-icon-size);
+  color: var(--e-icon-list-icon-color);
+  width: 1.25em;
+  flex-shrink: 0;
+}
+.e-icon-list__icon:empty { display: none; }
+.e-icon-list__text { padding-inline-start: var(--e-icon-list-indent); }
+
+/* view: inline */
+.e-icon-list--inline { flex-direction: row; flex-wrap: wrap; align-items: center; }
+.e-icon-list--inline .e-icon-list__item { margin-inline: calc(var(--e-icon-list-space) / 2); }
+.e-icon-list--inline .e-icon-list__item:first-child { margin-inline-start: 0; }
+.e-icon-list--inline .e-icon-list__item:last-child  { margin-inline-end: 0; }
+
+/* divider: yes */
+.e-icon-list--divider .e-icon-list__item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid var(--e-icon-list-divider-color, #ddd);
+}
+
+/* ==========================================================================
+   WIDGET: icon-box  (view stacked | position inline-start | shape circle)
+   ========================================================================== */
+.e-icon-box {
+  --e-ib-icon-size: 19px;
+  --e-ib-space: 13px;
+  --e-ib-primary: #FFFFFF38;
+  --e-ib-secondary: #D11424;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  text-align: start;
+}
+.e-icon-box__icon { margin-inline-end: var(--e-ib-space); flex-shrink: 0; }
+.e-icon-box__icon i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--e-ib-icon-size);
+  padding: .5em;
+  background-color: var(--e-ib-primary);
+  color: var(--e-ib-secondary);
+  border-radius: 50%;
+  transition: background-color .3s, color .3s;
+}
+.e-icon-box:hover .e-icon-box__icon i {
+  background-color: var(--e-ib-primary-hover, var(--e-ib-primary));
+  color: var(--e-ib-secondary-hover, var(--e-ib-secondary));
+}
+.e-icon-box__content { display: block; min-width: 0; }
+.e-icon-box__title { display: block; margin-bottom: 5px; }   /* title_bottom_space */
+.e-icon-box__desc  { display: block; }
+
+/* ==========================================================================
+   WIDGET: social-icons  (shape circle | cores custom)
+   ========================================================================== */
+.e-social-icons {
+  --e-si-size: 18px;
+  --e-si-gap: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e-si-gap);
+}
+.e-social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--e-si-size);
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  background-color: var(--e-si-primary, #FFFFFF38);
+  color: var(--e-si-secondary, #D11424);
+  transition: background-color .3s, color .3s;
+}
+.e-social-icon:hover {
+  background-color: var(--e-si-primary-hover, var(--e-si-primary));
+  color: var(--e-si-secondary-hover, var(--e-si-secondary));
+}
+
+/* ==========================================================================
+   WIDGET: divider  (com texto)
+   ========================================================================== */
+.e-divider {
+  --e-divider-color: #C09946;
+  --e-divider-weight: 1.9px;
+  --e-divider-width: 100%;
+  --e-divider-gap: 2px;
+  display: flex;
+}
+.e-divider--center { justify-content: center; }
+.e-divider--left   { justify-content: flex-start; }
+.e-divider__separator {
+  display: flex;
+  align-items: center;
+  width: var(--e-divider-width);
+  margin: 0;
+  direction: ltr;
+}
+.e-divider__separator::before,
+.e-divider__separator::after {
+  content: "";
+  display: block;
+  flex-grow: 1;
+  border-top: var(--e-divider-weight) solid var(--e-divider-color);
+}
+.e-divider__text {
+  padding-inline: var(--e-divider-gap);
+  flex-shrink: 0;
+  max-width: 95%;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   WIDGET: icon
+   ========================================================================== */
+.e-icon { display: inline-flex; line-height: 1; }
+.e-icon i   { font-size: var(--e-icon-size, 24px); }
+.e-icon svg { width: var(--e-icon-size, 24px); height: var(--e-icon-size, 24px); display: block; }
+.e-icon--shrink { transition: transform .3s; }
+.e-icon--shrink:hover { transform: scale(.85); }
+
+/* ==========================================================================
+   ANIMACOES DE ENTRADA (animate.css v3, como no Elementor)
+   .e-anim fica invisivel ate entrar na viewport; o JS adiciona .animated
+   ========================================================================== */
+.e-anim          { opacity: 0; }
+.e-anim.animated { opacity: 1; animation-duration: 1.25s; animation-fill-mode: both; }
+.e-anim.animated-slow.animated { animation-duration: 2s; }
+.e-anim.animated-fast.animated { animation-duration: .75s; }
+
+@keyframes fadeIn     { from { opacity: 0 } to { opacity: 1 } }
+@keyframes fadeInUp   { from { opacity: 0; transform: translate3d(0,100%,0) }  to { opacity: 1; transform: none } }
+@keyframes fadeInDown { from { opacity: 0; transform: translate3d(0,-100%,0) } to { opacity: 1; transform: none } }
+@keyframes zoomIn     { from { opacity: 0; transform: scale3d(.3,.3,.3) } 50% { opacity: 1 } to { opacity: 1; transform: none } }
+@keyframes slideInRight {
+  from { transform: translate3d(100%,0,0); visibility: visible }
+  to   { transform: translate3d(0,0,0) }
+}
+@keyframes bounce {
+  from, 20%, 53%, 80%, to { animation-timing-function: cubic-bezier(.215,.61,.355,1);   transform: translate3d(0,0,0) }
+  40%, 43%                { animation-timing-function: cubic-bezier(.755,.05,.855,.06); transform: translate3d(0,-30px,0) }
+  70%                     { animation-timing-function: cubic-bezier(.755,.05,.855,.06); transform: translate3d(0,-15px,0) }
+  90%                     { transform: translate3d(0,-4px,0) }
+}
+
+.animated.fadeIn       { animation-name: fadeIn }
+.animated.fadeInUp     { animation-name: fadeInUp }
+.animated.fadeInDown   { animation-name: fadeInDown }
+.animated.zoomIn       { animation-name: zoomIn }
+.animated.slideInRight { animation-name: slideInRight }
+.animated.bounce       { animation-name: bounce; transform-origin: center bottom }

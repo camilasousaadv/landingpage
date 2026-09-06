@@ -1,0 +1,153 @@
+/* ============================================================================
+   04-popup.css   ·   elementor-229 "Pop Menu"  (type: popup)
+   page_settings: fit_to_screen | slideInRight 0.9s | overlay #000000B3
+                  prevent_scroll | prevent_close_on_esc_key | avoid_multiple_popups
+   ============================================================================ */
+
+/* -------------------------------------------------------------- overlay -- */
+.e-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  display: none;
+  background-color: #000000B3;          /* overlay_background_color */
+}
+.e-popup.is-open { display: flex; }
+
+/* Posicao do modal dentro do overlay.
+   desktop : horizontal center / vertical center (padroes do Elementor)
+   tablet  : horizontal right
+   mobile  : horizontal right / vertical center                              */
+.e-popup {
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 1024px) { .e-popup { justify-content: flex-end; } }
+@media (max-width: 767px)  { .e-popup { justify-content: flex-end; align-items: center; } }
+
+/* ---------------------------------------------------------------- modal -- */
+.e-popup__modal {
+  position: relative;
+  width: 640px;                          /* largura padrao de popup do Elementor */
+  max-width: 100%;
+  height: 100vh;                         /* height_type: fit_to_screen */
+  overflow-y: auto;
+  /* background_color do JSON era #000000; trocado a pedido por #3f120b. */
+  background-color: #3f120b;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* O JSON define background_image_tablet = banner-ctt.png. Com o fundo pedido em
+   #3f120b a imagem cobria a cor no tablet e derrubava o contraste do texto, entao
+   ela foi suprimida para o pop-up ficar #3f120b em todos os tamanhos.
+   Para tra-la de volta, reative o background-image abaixo. */
+@media (max-width: 1024px) {
+  .e-popup__modal {
+    /* background-image: url("../images/banner-ctt.png"); */
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+@media (max-width: 767px) {
+  .e-popup__modal {
+    width: 85vw;                         /* width_mobile */
+    background-image: none;              /* background_image_mobile vazio */
+    background-position: center center;
+    background-size: cover;
+  }
+}
+
+/* Animacoes de entrada e saida (ambas "slideInRight", 0.9s, como no JSON) */
+.e-popup.is-open .e-popup__modal {
+  animation-name: slideInRight;
+  animation-duration: .9s;
+  animation-fill-mode: both;
+}
+.e-popup.is-closing .e-popup__modal {
+  animation-name: slideInRight;
+  animation-duration: .9s;
+  animation-fill-mode: both;
+}
+
+/* --------------------------------------------------------- botao fechar -- */
+.e-popup__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2em;
+  height: 2em;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+  font-size: 20px;                        /* padrao Elementor (nao exportado) */
+  line-height: 1;
+  color: #FFFFFF;                         /* close_button_color */
+  background-color: #970101;              /* close_button_background_color */
+}
+@media (max-width: 1024px) { .e-popup__close { font-size: 22px; } }  /* icon_size_tablet */
+@media (max-width: 767px)  { .e-popup__close { font-size: 17px; } }  /* icon_size_mobile */
+
+/* ------------------------------------------- container #6a5b5a2a (column) -- */
+.popup-menu {
+  position: relative;
+  flex-direction: column;
+  --container-width: 1140px;
+}
+/* background_overlay do container: a cor era #180000, que somada ao fundo do modal
+   deixava o pop-up quase preto. Passou para #3f120b tambem, entao no mobile (sem
+   imagem de fundo) o resultado e exatamente #3f120b, e no tablet a imagem
+   banner-ctt.png recebe um veu do mesmo tom em vez do preto anterior. */
+.popup-menu::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: #3f120b;
+  opacity: .5;                             /* background_overlay_opacity padrao */
+  pointer-events: none;
+}
+.popup-menu > .e-con-inner { position: relative; z-index: 1; }
+
+@media (max-width: 1024px) {
+  .popup-menu { min-height: 100vh; padding: 26px; }
+}
+@media (max-width: 767px) {
+  .popup-menu { min-height: 100vh; padding: 10px 10px 10px 16px; margin: 0; }
+}
+
+/* image #30bedefc — o JSON trazia width_tablet 30% / width_mobile 51%.
+   A pedido: tamanho fixo de 160px e centralizada. */
+.popup-logo { text-align: center; }
+.popup-logo img { width: 160px; max-width: 100%; margin-inline: auto; }
+
+/* heading #74dbf2a7 */
+.popup-title {
+  font-family: 'Lora', Georgia, 'Times New Roman', serif;
+  font-weight: 500;
+  color: #FFFFFF;
+}
+@media (max-width: 1024px) { .popup-title { font-size: 19px; margin: 14px 0 0 0; } }
+@media (max-width: 767px)  { .popup-title { font-size: 19px; margin: 20px 0 0 0; } }
+
+/* icon-list #f38310f */
+.popup-list {
+  --e-icon-list-space: 2px;
+  --e-icon-list-indent: 0px;
+  --e-icon-list-icon-size: 15px;
+  --e-icon-list-icon-color: #d11424;
+  --e-icon-list-divider-color: #3A3A3A63;
+  width: 100%;
+  margin: 0;
+  font-family: 'DM Sans', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #FFFFFFF0;
+}
+.popup-list .e-icon-list__item { transition: color .3s; }
+.popup-list .e-icon-list__item:hover { color: #d11424; }
+@media (max-width: 1024px) { .popup-list { --e-icon-list-icon-size: 10px; } }
+@media (max-width: 767px)  { .popup-list { --e-icon-list-space: 13px; --e-icon-list-icon-size: 10px; font-size: 17px; } }
